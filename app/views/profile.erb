@@ -1,0 +1,15 @@
+<div class='container'>
+  <h1>Welcome <%= @name %>!</h1>
+
+    <form id="start_game" method="post" action="/play">
+      <h4>Choose a deck or review your results:</h4><br>
+      <label>States and Capitals  <input type="radio" name="category"></label><br><br>
+      <label>Other  <input type="radio" name="category"></label><br><br>
+      <input type="submit" value="Play!" ><br>
+    </form>
+    <br><br><br>
+
+    <form id="view_results" method="get" action="/results">
+      <input type="submit" value="View Results">
+    </form>
+</div>
