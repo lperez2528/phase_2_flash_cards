@@ -3,7 +3,7 @@ get '/' do
 end
 
 post '/login' do
-  redirect to '/profile/user_name'
+  redirect to '/profile'
 end
 
 get '/signup' do
@@ -11,16 +11,29 @@ get '/signup' do
 end
 
 post '/create' do
-  redirect to '/profile/user_name'
+  redirect to '/profile'
 end
 
-get '/profile/user_name' do
+get '/profile' do
   @name = "Paul"
-
   erb :profile
 end
 
 get '/logout' do
-
   erb :index
+end
+
+get '/play' do
+  @correctness = "correct" # Insert dynamic data 
+  erb :play
+end
+
+post '/play' do
+  @correctness = "incorrect" # Insert dynamic data
+  erb :play
+end
+
+get '/results' do
+  # @name = "Paul"
+  erb :results
 end
