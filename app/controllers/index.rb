@@ -3,7 +3,7 @@ get '/' do
 end
 
 post '/login' do
-  redirect to '/profile/:user_name'
+  redirect to '/profile/user_name'
 end
 
 get '/signup' do
@@ -11,14 +11,16 @@ get '/signup' do
 end
 
 post '/create' do
-  redirect to '/profile/:user_name'
+  redirect to '/profile/user_name'
 end
 
-get '/profile/:user_name' do
-  params[:user_name] = "Paul"
-  @name = params[:user_name]
+get '/profile/user_name' do
+  @name = "Paul"
+
   erb :profile
 end
 
 get '/logout' do
+
+  erb :index
 end
