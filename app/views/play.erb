@@ -5,11 +5,11 @@
     <% if @card_number == 1 %>
       <h3>Get playing!</h3>
     <% else %>
-    <% if @correctness == true%>
-      <p> <b>Correct!</b> The capitol of <%="#{@current_card.question}"%> is <%="#{@current_card.answer}!"%></p>
-      <% else %>
-      <p><b>Incorrect!</b> The capitol of <%="#{@current_card.question}"%> is <%="#{@current_card.answer}..."%></p>
-    <% end %>
+      <% if @correctness == true%>
+        <p> <b>Correct!</b> The capitol of <%="#{@current_card.question}"%> is <%="#{@current_card.answer}!"%></p>
+        <% else %>
+        <p><b>Incorrect!</b> The capitol of <%="#{@current_card.question}"%> is <%="#{@current_card.answer}..."%></p>
+      <% end %>
     <% end %>
 
       <form id="question" method="post" action="/play/<%= @round.id %>/<%= @card_number %>">
