@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   #   @user = User.new(params[:user])
   #   @user.password = params[:password]
   #   @user.save!
-  # end
+  # end 
 
   def authenticate(input_password)
     self.password == input_password
