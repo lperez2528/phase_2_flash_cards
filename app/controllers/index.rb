@@ -29,16 +29,44 @@ get '/logout' do
   erb :index
 end
 
-get '/play/deck_id' do
+
+#Profile.erb, submit deck_id in a form
+get '/play' do
   session[:user_id]
-  @deck = Deck.find(params[:deck_id])  
+  @deck = Deck.find(params[:deck_id])
+  @round = Round.create(user_id: session[:user_id], deck_id: @deck.id)
+  @card_number = 1  
   erb :play
 end
 
-post '/play/question_id' do
+
+#Play.erb, question form
+post '/play/:round_id/:card_id' do
   session[:user_id] 
-  
-  @correctness = "incorrect" # Insert dynamic data
+  @round = Round.find(params[:round_id])
+  @deck = Deck.find(@round.deck_id)
+  @card_number = (params[:card_id]).to_i
+  @current_card = Card.find(@card_number)
+  @user = session[:user_id]
+
+  if @round
+    @card_number += 1
+    # assess correctness
+    @user_answer = params[:user_answer] 
+
+    if @user_answer == @current_card.answer
+      @correctness = true
+    else
+      @correctness = false
+    end
+    @guess = Guess.create(
+      answer_input: @user_answer, 
+      card_id: @card_number, 
+      round_id: @round.id, 
+      correctness: @correctness
+      )
+  end
+
   erb :play
 end
 

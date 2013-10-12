@@ -1,7 +1,7 @@
 <div class='container'>
   <h1>Welcome <%= @user.name %>!</h1>
 
-    <form id="start_game" method="get" action="/play/deck_id">
+    <form id="start_game" method="get" action="/play">
       <h4>Choose a deck or review your results:</h4><br>
       <% @decks.each do |deck| %> 
         <label><%= deck.category  %> <input type="radio" name="deck_id" value="<%= deck.id %>"></label><br><br>

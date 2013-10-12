@@ -1,24 +1,22 @@
 <div class='container'>
 
   <h2><%= @deck.category %></h2>
-  <% counter = 1 %>
 
-  <% until counter == 2 %> 
-    <% if counter == 1 %>
+    <% if @card_number == 1 %>
       <h3>Get playing!</h3>
     <% else %>
-
+    <% if @correctness == true%>
+      <p> <b>Correct!</b> The capitol of <%="#{@current_card.question}"%> is <%="#{@current_card.answer}!"%></p>
     <% end %>
-  
-    <form id="question" method="post" action="/play/question_id">
-      <h3>What is the capital of <%= @deck.cards.find(counter).question %>?</h3>
-      <br><br> <!-- replace with dynamic data -->
-     <!-- replace with dynamic data -->
-      <input type="text" name="user_answer"><br>
-      <input type="submit" value="Submit Answer">
-    </form>
-    <% counter += 1 %>
+    <% end %>
+
+      <form id="question" method="post" action="/play/<%= @round.id %>/<%= @card_number %>">
+        <h3>What is the capital of <%= @deck.cards.find(@card_number).question %>?</h3>
+        <br><br> 
+        <input type="text" name="user_answer"><br><br>
+        <input type="submit" value="Submit Answer">
+      </form>
      
     <br><br>
-  <% end %>
+ 
 </div>
