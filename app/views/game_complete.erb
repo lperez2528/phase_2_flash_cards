@@ -1,1 +1,12 @@
-<h1>so far so good.<h1>
+<dir class="container">
+  <% if @correctness == true%>
+    <p> <b>Correct!</b> The capitol of <%="#{@current_card.question}"%> is <%="#{@current_card.answer}!"%></p>
+    <% else %>
+    <p><b>Incorrect!</b> The capitol of <%="#{@current_card.question}"%> is <%="#{@current_card.answer}..."%></p>
+  <% end %>
+  
+  <form id="results" mtheod="get" action="/results">
+    <input type="submit" name="results" value="View Results">
+  </form>
+
+</dir>
