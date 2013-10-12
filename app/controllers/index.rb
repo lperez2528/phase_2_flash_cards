@@ -11,11 +11,15 @@ get '/signup' do
 end
 
 post '/create' do
-  redirect to '/profile'
+  @user = User.create(name: params[:name], email: params[:email], password: params[:password])
+  session[:user_id] = @user.id
+  redirect to "/profile/#{@user.id}"
 end
 
-get '/profile' do
-  @name = "Paul"
+get '/profile/:user_id' do
+  session[:user_id]
+  @user = User.find(session[:user_id])
+  @decks = Deck.all
   erb :profile
 end
 
@@ -23,8 +27,11 @@ get '/logout' do
   erb :index
 end
 
-get '/play' do
-  @correctness = "correct" # Insert dynamic data 
+get '/play/deck_id' do
+  session[:user_id]
+  @correctness = "correct" # Insert dynamic data
+  p params[:deck_id]
+  
   erb :play
 end
 
