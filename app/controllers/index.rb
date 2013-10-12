@@ -103,17 +103,15 @@ get '/play/:round_id/:card_number/' do
   @deck = Deck.find(@round.deck_id)
   @correct_guess_count = @round.correct_guess_count
 
-
   erb :play
 end
 
 get "/game_complete/:card_id/:correctness/:round_id/" do
-
+  @current_card = Card.find(params[:card_id])
   erb :game_complete
 end
 
-
 get '/results' do
-  # @name = "Paul"
+  
   erb :results
 end
