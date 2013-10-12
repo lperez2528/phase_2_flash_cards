@@ -1,20 +1,24 @@
 <div class='container'>
 
-  <h2>States and Capitals</h2> <!-- replace with dynamic data -->
+  <h2><%= @deck.category %></h2>
+  <% counter = 1 %>
 
-  <% counter = 2 %> <!-- insert coutner and logic for iterating through questions-->
-  <% if counter == 1 %>
-    <h3>Get playing!</h3>
-  <% else %>
-    <h3><%= @correctness.upcase + "!" %></h3>
-    <h4>The capital of California is Sacramento</h4>  <!-- replace with dynamic data -->
+  <% until counter == 2 %> 
+    <% if counter == 1 %>
+      <h3>Get playing!</h3>
+    <% else %>
+
+    <% end %>
+  
+    <form id="question" method="post" action="/play/question_id">
+      <h3>What is the capital of <%= @deck.cards.find(counter).question %>?</h3>
+      <br><br> <!-- replace with dynamic data -->
+     <!-- replace with dynamic data -->
+      <input type="text" name="user_answer"><br>
+      <input type="submit" value="Submit Answer">
+    </form>
+    <% counter += 1 %>
+     
+    <br><br>
   <% end %>
-  <br><br>
-  <form id="question" method="post" action="/play">
-    <%= "Question #1" %><br><br> <!-- replace with dynamic data -->
-    <%= "What is the capital of Virginia?" %> <!-- replace with dynamic data -->
-    <input type="text" name="user_answer"><br>
-    <input type="submit" value="Submit Answer">
-</form>
-
 </div>

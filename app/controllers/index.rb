@@ -2,8 +2,10 @@ get '/' do
   erb :index
 end
 
-post '/login' do
-  redirect to '/profile'
+post '/' do
+  @user = User.find_by_email(params[:email])
+  session[:user_id] = @user.id
+  redirect to "/profile/#{@user.id}"
 end
 
 get '/signup' do
@@ -29,16 +31,17 @@ end
 
 get '/play/deck_id' do
   session[:user_id]
-  @correctness = "correct" # Insert dynamic data
-  p params[:deck_id]
-  
+  @deck = Deck.find(params[:deck_id])  
   erb :play
 end
 
-post '/play' do
+post '/play/question_id' do
+  session[:user_id] 
+  
   @correctness = "incorrect" # Insert dynamic data
   erb :play
 end
+
 
 get '/results' do
   # @name = "Paul"
