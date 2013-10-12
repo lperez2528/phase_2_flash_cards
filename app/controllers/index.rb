@@ -30,7 +30,6 @@ get '/logout' do
   erb :index
 end
 
-
 #Profile.erb, submit deck_id in a form
 get '/play' do
   session[:user_id]
@@ -39,8 +38,6 @@ get '/play' do
   @card_number = 1  
   erb :play
 end
-
-
 
 #Play.erb, question form
 post '/play/:round_id/:card_id' do
@@ -52,13 +49,9 @@ post '/play/:round_id/:card_id' do
   @user = session[:user_id]
   @deck_length = @deck.cards.length
   @correct_guess_count = @round.correct_guess_count
-  p "This is the card number: #{@card_number} !!!!!!!!!!!!!!!!!!!"
-
 
   while @card_number < @deck_length
     @card_number += 1
-    p "This is the card number: #{@card_number} !!!!!!!!!!!!!!!!!!!"
-    # assess correctness
     @user_answer = params[:user_answer] 
 
     if @user_answer == @current_card.answer
@@ -112,6 +105,8 @@ get "/game_complete/:card_id/:correctness/:round_id/" do
 end
 
 get '/results' do
-  
+  @user = User.find(session[:user_id])
+  p @rounds = @user.rounds
+
   erb :results
 end
