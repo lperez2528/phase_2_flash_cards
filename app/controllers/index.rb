@@ -30,7 +30,7 @@ end
 get '/play/deck_id' do
   session[:user_id]
   @correctness = "correct" # Insert dynamic data
-  params[:deck_id]
+  p params[:deck_id]
   
   erb :play
 end
