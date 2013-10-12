@@ -1,9 +1,9 @@
 <div class='container'>
 
-  <% if @name == nil %>
-    <h2>You've not played any games, get playing!</h2> %>
+  <% if @user.rounds.length == 0 %>
+    <h2>You've not played any games, get playing!</h2>
   <% else %>
-    <h2><%= @name %>, you are doing great!</h2>
+    <h2><%= @user.name %>, you are doing great!</h2>
     <h3>Here are your results</h3>
   <% end %>
   <br><br>
@@ -16,12 +16,16 @@
       <th>Score</th>
     </tr>
 
-    <tr>
-      <td>11 Nov 2013</td> <!-- replace with dynamic data -->
-      <td>States and Capitals</td> <!-- replace with dynamic data -->
-      <td>1 out of 50</td> <!-- replace with dynamic data -->
-      <td>2%</td>
-    </tr>
+    <% @rounds.each do |round| %>
+      <tr>
+        <td><%= round.updated_at %></td>
+        <% deck_id = round.deck_id %>
+        <% deck = Deck.find(deck_id) %>
+        <td><%= deck.category %></td>
+        <td><%= round.correct_guess_count %> out of <%= deck.cards.length %></td>
+        <td><%= (round.correct_guess_count.to_f)/deck.cards.length*100 %>%</td>
+      </tr>
+    <% end %>
   </table>
 
   <br><br><br>
