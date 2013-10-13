@@ -5,10 +5,10 @@
     <% if @card_number == 1 %>
       <h3>Get playing!</h3>
     <% else %>
-      <% if @correctness == true%>
-        <p> <b>Correct!</b> The capitol of <%="#{@current_card.question}"%> is <%="#{@current_card.answer}!"%></p>
-        <% else %>
-        <p><b>Incorrect!</b> The capitol of <%="#{@current_card.question}"%> is <%="#{@current_card.answer}..."%></p>
+      <% if @correctness %>      
+        <p><b>Correct!</b> The capital of <%="#{@previous_card.question}"%> is <%="#{@previous_card.answer}!"%></p>
+      <% else %>
+        <p><b>Incorrect!</b> The capital of <%="#{@previous_card.question}"%> is <%="#{@previous_card.answer}!"%></p>
       <% end %>
     <% end %>
 
