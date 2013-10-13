@@ -23,7 +23,7 @@
         <% deck = Deck.find(deck_id) %>
         <td><%= deck.category %></td>
         <td><%= round.correct_guess_count %> out of <%= deck.cards.length %></td>
-        <td><%= (round.correct_guess_count.to_f)/deck.cards.length*100 %>%</td>
+        <td><%= ((round.correct_guess_count.to_f)/deck.cards.length*100).round %>%</td>
       </tr>
     <% end %>
   </table>
@@ -32,7 +32,7 @@
   <p>
     <a href='/'>Return to homepage</a>
      or 
-    <a href='/profile'>Play again!</a>
+    <a href='/profile/<%=@user.id%>'>Play again!</a>
 
   </p>
 
