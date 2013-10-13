@@ -2,8 +2,24 @@
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+  /*border: 1px dotted black*/;
 }
 th {
   text-align: left;
 }
+
+body {
+	background-image: url(http://hdwallpapersdirectory.com/wp-content/uploads/2013/04/awesome-backgrounds.jpg);
+	color: white;
+	font-family: Papyrus, fantasy;
+}
+
+a {
+	color: #00FA9A;
+}
+
+input {
+    border: 2px solid white;
+    background: black;
+    color: white;
+  }
