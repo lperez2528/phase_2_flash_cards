@@ -18,7 +18,9 @@
   <title></title>
 </head>
 <body>
+<% if session? %>
   <%= erb :navbar %>
+  <% end %>
   <%= yield %>
 </body>
 </html>
