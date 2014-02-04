@@ -1,7 +1,9 @@
 <dir class="container">
-  <% if @correctness == true%>
+
+  <% if @correctness%>
     <p> <b>Correct!</b> The capitol of <%="#{@current_card.question}"%> is <%="#{@current_card.answer}!"%></p>
-    <% else %>
+
+  <% else %>
     <p><b>Incorrect!</b> The capitol of <%="#{@current_card.question}"%> is <%="#{@current_card.answer}..."%></p>
   <% end %>
   
